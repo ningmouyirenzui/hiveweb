@@ -1,722 +1,602 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Network - Protect Earth</title>
+    <title>创想科技 - 创新驱动未来</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入Font Awesome图标 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #2e7d32;
-            --secondary: #4caf50;
-            --accent: #8bc34a;
-            --light: #e8f5e9;
-            --dark: #1b5e20;
-            --text: #333333;
-            --white: #ffffff;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .logo i {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--accent);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .section-title p {
-            color: var(--text);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-img {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .about-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 2rem 1rem;
-            background-color: var(--white);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .stat-item i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .stat-item h3 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            color: var(--text);
-        }
-
-        .initiatives {
-            background-color: var(--white);
-        }
-
-        .initiatives-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .initiative-card {
-            background-color: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-
-        .initiative-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .initiative-img {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .initiative-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .initiative-card:hover .initiative-img img {
-            transform: scale(1.1);
-        }
-
-        .initiative-content {
-            padding: 1.5rem;
-        }
-
-        .initiative-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-
-        .initiative-content p {
-            margin-bottom: 1.5rem;
-        }
-
-        .cta {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-            text-align: center;
-            padding: 5rem 0;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta .btn {
-            background-color: var(--white);
-            color: var(--primary);
-        }
-
-        .cta .btn:hover {
-            background-color: var(--accent);
-            color: var(--white);
-        }
-
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-column h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent);
-        }
-
-        .footer-column p {
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links li a {
-            color: var(--light);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-links li a:hover {
-            color: var(--accent);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--white);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 992px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#36CFC9',
+                        dark: '#1D2129',
+                        light: '#F2F3F5'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
             }
         }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+    </script>
+    <!-- 自定义样式 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
             }
-            
-            .hero p {
-                font-size: 1.1rem;
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
             }
-            
-            nav ul {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--primary);
-                flex-direction: column;
-                padding: 1rem 0;
-                text-align: center;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            .transition-custom {
+                transition: all 0.3s ease-in-out;
             }
-            
-            nav ul.active {
-                display: flex;
-            }
-            
-            nav ul li {
-                margin: 0;
-                padding: 0.8rem 0;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .initiatives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Animation for stats counter */
-        .counter {
-            transition: all 0.5s ease;
         }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo">
-                <i class="fas fa-seedling"></i>
-                <span>Green Network</span>
-            </div>
-            <nav>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
+<body class="font-sans text-dark bg-white">
+    <!-- 导航栏 -->
+    <header class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm transition-custom">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <i class="fa-solid fa-rocket text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-primary">创想科技</span>
+                    </a>
                 </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#get-involved">Get Involved</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+
+                <!-- 桌面端导航 -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-dark hover:text-primary font-medium transition-custom">首页</a>
+                    <a href="#features" class="text-dark hover:text-primary font-medium transition-custom">特色</a>
+                    <a href="#services" class="text-dark hover:text-primary font-medium transition-custom">服务</a>
+                    <a href="#testimonials" class="text-dark hover:text-primary font-medium transition-custom">客户评价</a>
+                    <a href="#contact" class="text-dark hover:text-primary font-medium transition-custom">联系我们</a>
+                </nav>
+
+                <!-- 联系按钮 -->
+                <div class="hidden md:block">
+                    <a href="#contact" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-custom">
+                        立即咨询
+                    </a>
+                </div>
+
+                <!-- 移动端菜单按钮 -->
+                <div class="md:hidden">
+                    <button id="menuBtn" class="text-dark hover:text-primary">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-3 space-y-3">
+                <a href="#home" class="block py-2 text-dark hover:text-primary">首页</a>
+                <a href="#features" class="block py-2 text-dark hover:text-primary">特色</a>
+                <a href="#services" class="block py-2 text-dark hover:text-primary">服务</a>
+                <a href="#testimonials" class="block py-2 text-dark hover:text-primary">客户评价</a>
+                <a href="#contact" class="block py-2 text-dark hover:text-primary">联系我们</a>
+                <a href="#contact" class="block bg-primary text-white py-2 rounded-lg text-center">立即咨询</a>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Protect Our Planet, Preserve Our Future</h1>
-            <p>Join the global movement to create a sustainable world through conservation, education, and community action.</p>
-            <a href="#get-involved" class="btn">Join Our Network</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Green Network</h2>
-                <p>We are a global community dedicated to environmental protection and sustainable development.</p>
-            </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team planting trees">
+    <!-- 英雄区 -->
+    <section id="home" class="pt-28 pb-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight text-shadow mb-4">
+                        创新科技 <span class="text-primary">驱动</span> 企业增长
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-lg">
+                        我们提供一站式数字化解决方案，帮助企业实现技术升级、效率提升和业务增长，让创新成为核心竞争力。
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#contact" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-custom">
+                            开始合作
+                        </a>
+                        <a href="#services" class="border border-primary text-primary hover:bg-primary/5 px-6 py-3 rounded-lg font-medium transition-custom">
+                            了解服务
+                        </a>
+                    </div>
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="flex -space-x-2">
+                            <img src="https://picsum.photos/40/40?random=1" alt="客户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/40/40?random=2" alt="客户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/40/40?random=3" alt="客户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/40/40?random=4" alt="客户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">
+                                <span class="font-bold text-primary">500+</span> 企业的选择
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-text">
-                    <h3>Our Mission</h3>
-                    <p>Green Network is committed to creating a sustainable future by protecting natural ecosystems, promoting renewable energy, and empowering communities to take environmental action.</p>
-                    <p>Founded in 2010, we've grown from a small grassroots organization to an international network with over 50,000 members across 120 countries.</p>
-                    <p>Our approach combines scientific research, community engagement, and policy advocacy to address the most pressing environmental challenges of our time.</p>
-                    <a href="#" class="btn">Learn More</a>
-                </div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <i class="fas fa-tree"></i>
-                    <h3 class="counter" data-target="2500000">0</h3>
-                    <p>Trees Planted</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-users"></i>
-                    <h3 class="counter" data-target="50000">0</h3>
-                    <p>Active Members</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3 class="counter" data-target="120">0</h3>
-                    <p>Countries Reached</p>
-                </div>
-                <div class="stat-item">
-                    <i class="fas fa-recycle"></i>
-                    <h3 class="counter" data-target="1500">0</h3>
-                    <p>Cleanup Projects</p>
+                <div class="lg:w-1/2">
+                    <img src="https://picsum.photos/800/600?random=10" alt="创新科技解决方案" class="rounded-xl shadow-xl w-full max-w-lg mx-auto">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Initiatives Section -->
-    <section class="initiatives" id="initiatives">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Initiatives</h2>
-                <p>Discover the key programs and projects we're implementing to protect our planet.</p>
+    <!-- 合作伙伴 -->
+    <section class="py-10 bg-light">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-500 mb-8">值得信赖的合作伙伴</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70">
+                <img src="https://picsum.photos/120/40?random=11" alt="合作伙伴logo" class="h-8 grayscale hover:grayscale-0 transition-custom">
+                <img src="https://picsum.photos/120/40?random=12" alt="合作伙伴logo" class="h-8 grayscale hover:grayscale-0 transition-custom">
+                <img src="https://picsum.photos/120/40?random=13" alt="合作伙伴logo" class="h-8 grayscale hover:grayscale-0 transition-custom">
+                <img src="https://picsum.photos/120/40?random=14" alt="合作伙伴logo" class="h-8 grayscale hover:grayscale-0 transition-custom">
+                <img src="https://picsum.photos/120/40?random=15" alt="合作伙伴logo" class="h-8 grayscale hover:grayscale-0 transition-custom">
             </div>
-            <div class="initiatives-grid">
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://dialogue.earth/content/uploads/2021/04/lessons-from-the-rush-to-reforest-china-dialogue-2400x1599.jpg" alt="Reforestation">
+        </div>
+    </section>
+
+    <!-- 特色板块 -->
+    <section id="features" class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">核心优势</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们凭借专业的技术能力和丰富的行业经验，为客户提供高品质的解决方案和服务</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 特色1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-custom border border-gray-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-lightbulb text-primary text-xl"></i>
                     </div>
-                    <div class="initiative-content">
-                        <h3>Global Reforestation</h3>
-                        <p>Planting millions of trees worldwide to restore ecosystems, combat climate change, and protect biodiversity.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    <h3 class="text-xl font-bold mb-3">创新解决方案</h3>
+                    <p class="text-gray-600">
+                        基于客户实际需求，定制化开发创新解决方案，解决行业痛点问题
+                    </p>
+                </div>
+
+                <!-- 特色2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-custom border border-gray-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-halved text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">安全可靠</h3>
+                    <p class="text-gray-600">
+                        严格的安全标准和质量控制流程，确保系统稳定运行和数据安全
+                    </p>
+                </div>
+
+                <!-- 特色3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-custom border border-gray-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-rocket text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">高效实施</h3>
+                    <p class="text-gray-600">
+                        标准化的实施流程和专业的项目管理，确保项目按时按质完成
+                    </p>
+                </div>
+
+                <!-- 特色4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-custom border border-gray-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-headset text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">7×24小时支持</h3>
+                    <p class="text-gray-600">
+                        专业的技术支持团队，随时响应客户需求，解决各类技术问题
+                    </p>
+                </div>
+
+                <!-- 特色5 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-custom border border-gray-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-chart-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">数据驱动</h3>
+                    <p class="text-gray-600">
+                        基于数据分析和洞察，持续优化解决方案，提升客户业务价值
+                    </p>
+                </div>
+
+                <!-- 特色6 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-custom border border-gray-100">
+                    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-handshake-angle text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">长期合作</h3>
+                    <p class="text-gray-600">
+                        与客户建立长期合作关系，伴随客户共同成长，持续提供价值
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务板块 -->
+    <section id="services" class="py-20 bg-light">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">我们的服务</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">全方位的数字化服务，满足企业不同阶段的发展需求</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- 服务1 -->
+                <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-custom">
+                    <div class="md:w-1/3 bg-primary/10 p-6 flex items-center justify-center">
+                        <i class="fa-solid fa-code text-primary text-4xl"></i>
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <h3 class="text-xl font-bold mb-3">软件开发</h3>
+                        <p class="text-gray-600 mb-4">
+                            定制化软件开发，包括企业管理系统、移动应用、Web应用等，满足客户个性化需求
+                        </p>
+                        <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center">
+                            了解更多 <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Ocean Conservation">
+
+                <!-- 服务2 -->
+                <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-custom">
+                    <div class="md:w-1/3 bg-primary/10 p-6 flex items-center justify-center">
+                        <i class="fa-solid fa-cloud text-primary text-4xl"></i>
                     </div>
-                    <div class="initiative-content">
-                        <h3>Ocean Conservation</h3>
-                        <p>Protecting marine ecosystems, reducing plastic pollution, and promoting sustainable fishing practices.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    <div class="md:w-2/3 p-6">
+                        <h3 class="text-xl font-bold mb-3">云计算服务</h3>
+                        <p class="text-gray-600 mb-4">
+                            云服务器部署、云原生应用开发、多云管理等服务，帮助企业实现数字化转型
+                        </p>
+                        <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center">
+                            了解更多 <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="initiative-card">
-                    <div class="initiative-img">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Renewable Energy">
+
+                <!-- 服务3 -->
+                <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-custom">
+                    <div class="md:w-1/3 bg-primary/10 p-6 flex items-center justify-center">
+                        <i class="fa-solid fa-database text-primary text-4xl"></i>
                     </div>
-                    <div class="initiative-content">
-                        <h3>Renewable Energy</h3>
-                        <p>Promoting solar, wind, and other clean energy sources to reduce dependence on fossil fuels.</p>
-                        <a href="#" class="btn">Learn More</a>
+                    <div class="md:w-2/3 p-6">
+                        <h3 class="text-xl font-bold mb-3">大数据分析</h3>
+                        <p class="text-gray-600 mb-4">
+                            数据采集、清洗、分析和可视化，帮助企业挖掘数据价值，做出科学决策
+                        </p>
+                        <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center">
+                            了解更多 <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 服务4 -->
+                <div class="flex flex-col md:flex-row bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-custom">
+                    <div class="md:w-1/3 bg-primary/10 p-6 flex items-center justify-center">
+                        <i class="fa-solid fa-shield-virus text-primary text-4xl"></i>
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <h3 class="text-xl font-bold mb-3">网络安全</h3>
+                        <p class="text-gray-600 mb-4">
+                            安全评估、漏洞扫描、防护体系建设，全方位保障企业网络安全
+                        </p>
+                        <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center">
+                            了解更多 <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta" id="get-involved">
-        <div class="container">
-            <h2>Join Our Global Movement</h2>
-            <p>Together, we can create a sustainable future for generations to come. Every action counts, no matter how small.</p>
-            <a href="#" class="btn">Become a Member</a>
+    <!-- 客户评价 -->
+    <section id="testimonials" class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">客户怎么说</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">来自各行各业客户的真实评价，见证我们的服务品质</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 评价1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-custom border border-gray-100">
+                    <div class="flex items-center mb-4 text-yellow-400">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "创想科技的解决方案帮助我们企业提升了50%的运营效率，团队专业且响应迅速，是值得信赖的合作伙伴。"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/60/60?random=21" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">张总</h4>
+                            <p class="text-sm text-gray-500">某科技公司CEO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 评价2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-custom border border-gray-100">
+                    <div class="flex items-center mb-4 text-yellow-400">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "从需求分析到系统上线，创想科技的团队全程专业高效，定制的管理系统完美契合我们的业务流程。"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/60/60?random=22" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">李经理</h4>
+                            <p class="text-sm text-gray-500">某制造企业运营总监</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 评价3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-custom border border-gray-100">
+                    <div class="flex items-center mb-4 text-yellow-400">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "大数据分析服务让我们精准把握市场趋势，营销效果提升显著，创想科技的技术实力令人印象深刻。"
+                    </p>
+                    <div class="flex items-center">
+                        <img src="https://picsum.photos/60/60?random=23" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">王总监</h4>
+                            <p class="text-sm text-gray-500">某电商平台市场总监</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Green Network</h3>
-                    <p>We are dedicated to protecting our planet through collaborative action, education, and sustainable solutions.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold mb-4">联系我们</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">填写表单，我们的专业顾问将在24小时内与您联系</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl shadow-lg p-8 md:p-10">
+                    <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="md:col-span-2">
+                            <label for="name" class="block text-gray-700 mb-2">姓名</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="请输入您的姓名">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">电话</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="请输入您的电话">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">邮箱</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="请输入您的邮箱">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="service" class="block text-gray-700 mb-2">感兴趣的服务</label>
+                            <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary">
+                                <option value="">请选择服务类型</option>
+                                <option value="software">软件开发</option>
+                                <option value="cloud">云计算服务</option>
+                                <option value="data">大数据分析</option>
+                                <option value="security">网络安全</option>
+                                <option value="other">其他服务</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="message" class="block text-gray-700 mb-2">留言</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="请详细描述您的需求"></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-custom">
+                                提交咨询
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-custom">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                            <i class="fa-solid fa-phone text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">联系电话</h3>
+                        <p class="text-gray-600">400-123-4567</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-custom">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                            <i class="fa-solid fa-envelope text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">电子邮箱</h3>
+                        <p class="text-gray-600">contact@cxtech.com</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-custom">
+                        <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                            <i class="fa-solid fa-map-marker-alt text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">公司地址</h3>
+                        <p class="text-gray-600">北京市朝阳区科技园88号</p>
                     </div>
                 </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#initiatives">Initiatives</a></li>
-                        <li><a href="#get-involved">Get Involved</a></li>
-                        <li><a href="#contact">Contact</a></li>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fa-solid fa-rocket text-primary text-2xl mr-2"></i>
+                        <span class="text-xl font-bold">创想科技</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        创新科技驱动企业增长，让技术创造价值
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-custom">
+                            <i class="fa-brands fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-custom">
+                            <i class="fa-brands fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-custom">
+                            <i class="fa-brands fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-custom">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">快速链接</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-primary transition-custom">首页</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-primary transition-custom">核心优势</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-primary transition-custom">服务内容</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-primary transition-custom">客户评价</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-primary transition-custom">联系我们</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Our Programs</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Reforestation</a></li>
-                        <li><a href="#">Ocean Cleanup</a></li>
-                        <li><a href="#">Wildlife Protection</a></li>
-                        <li><a href="#">Climate Education</a></li>
-                        <li><a href="#">Sustainable Agriculture</a></li>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">服务范围</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-custom">软件开发</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-custom">云计算服务</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-custom">大数据分析</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-custom">网络安全</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-custom">技术咨询</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Copper Creek Drive, New York</p>
-                    <p><i class="fas fa-phone"></i> +1 (312) 171-0771</p>
-                    <p><i class="fas fa-envelope"></i> support@greennetwork.org</p>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">订阅资讯</h4>
+                    <p class="text-gray-400 mb-4">
+                        订阅我们的技术资讯，了解最新行业动态
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="您的邮箱地址" class="flex-1 px-4 py-2 rounded-l-lg focus:outline-none text-dark">
+                        <button type="submit" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-r-lg transition-custom">
+                            订阅
+                        </button>
+                    </form>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 Green Network. All rights reserved.</p>
+            <div class="border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>© 2025 创想科技 版权所有 | 京ICP备12345678号</p>
             </div>
         </div>
     </footer>
 
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-primary/90 transition-custom opacity-0 invisible">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
     <script>
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav ul').classList.toggle('active');
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
 
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            const speed = 200; // The lower the slower
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                
-                const inc = target / speed;
-                
-                if(count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(animateCounters, 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
-
-        // Initialize counters when page loads
-        window.addEventListener('load', animateCounters);
-
-        // Smooth scrolling for navigation links
+        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+                // 关闭移动端菜单
+                mobileMenu.classList.add('hidden');
                 
+                const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
-                if(targetElement) {
+                
+                if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
-                    document.querySelector('nav ul').classList.remove('active');
                 }
             });
         });
+
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+            
+            // 导航栏滚动效果
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('shadow-sm');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 表单提交
+        const contactForm = document.querySelector('form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // 简单表单验证
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (!name || !phone) {
+                alert('请填写姓名和电话');
+                return;
+            }
+            
+            // 模拟提交成功
+            alert('提交成功！我们将尽快与您联系');
+            contactForm.reset();
+        });
     </script>
 </body>
-
 </html>
